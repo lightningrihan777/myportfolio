@@ -1,0 +1,105 @@
+import { Scene3D } from '@/components/3d/Scene3D';
+import { VoteButtons } from '@/components/VoteButtons';
+import { LanguageToggle } from '@/components/LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
+import candidatePhoto from '@/assets/candidate-yaseen.jpg';
+import { Briefcase, GraduationCap, Users, Target } from 'lucide-react';
+
+const Index = () => {
+  const { t } = useLanguage();
+
+  return (
+    <div className="relative w-full min-h-screen overflow-x-hidden">
+      <LanguageToggle />
+      
+      <div className="absolute inset-0 z-0 h-screen">
+        <Scene3D />
+      </div>
+
+      <div className="relative z-30 pt-8 pb-20">
+        {/* Header */}
+        <div className="text-center px-4 mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-lg animate-fade-in">
+            {t('Welcome to Our Campaign', 'ഞങ്ങളുടെ പ്രചാരണത്തിലേക്ക് സ്വാഗതം')}
+          </h1>
+          <p className="text-lg md:text-xl text-foreground/80 mt-4 drop-shadow animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {t('Building a Better Tomorrow Together', 'ഒരുമിച്ച് മെച്ചപ്പെട്ട നാളെ കെട്ടിപ്പടുക്കുന്നു')}
+          </p>
+        </div>
+
+        {/* Candidate Profile Section */}
+        <div className="container mx-auto px-4 max-w-6xl mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="bg-background/90 backdrop-blur-md rounded-3xl shadow-2xl border-4 border-primary/30 overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-8 p-8">
+              {/* Left: Photo with 3D effect */}
+              <div className="flex items-center justify-center">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity animate-float"></div>
+                  <div className="relative rounded-2xl overflow-hidden border-4 border-primary shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src={candidatePhoto} 
+                      alt="Yaseen CH" 
+                      className="w-full h-auto object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Details */}
+              <div className="flex flex-col justify-center space-y-6">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                    {t('YASEEN CH', 'യാസീൻ സി എച്ച്')}
+                  </h2>
+                  <p className="text-xl text-secondary font-semibold">
+                    {t('Ward 45 Candidate', 'വാർഡ് 45 സ്ഥാനാർത്ഥി')}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors">
+                    <Users className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                    <p className="text-foreground/90">
+                      {t('Well known for serving people and making lives happier and better', 'ജനങ്ങളെ സേവിക്കുന്നതിലും ജീവിതം സന്തോഷകരവും മെച്ചപ്പെട്ടതുമാക്കുന്നതിലും പ്രശസ്തൻ')}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-3 bg-secondary/5 rounded-lg hover:bg-secondary/10 transition-colors">
+                    <GraduationCap className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                    <p className="text-foreground/90">
+                      {t('Lab Assistant at Payyanur College', 'പയ്യന്നൂർ കോളേജിൽ ലാബ് അസിസ്റ്റന്റ്')}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg hover:bg-primary/10 transition-colors">
+                    <Briefcase className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                    <p className="text-foreground/90">
+                      {t('Owner of a Travels Company', 'ട്രാവൽസ് കമ്പനിയുടെ ഉടമ')}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-3 bg-secondary/5 rounded-lg hover:bg-secondary/10 transition-colors">
+                    <Target className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                    <p className="text-foreground/90 font-semibold">
+                      {t('Promised to make society better and developed', 'സമൂഹത്തെ മെച്ചപ്പെടുത്താനും വികസിപ്പിക്കാനും വാഗ്ദാനം ചെയ്യുന്നു')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Vote Buttons */}
+        <VoteButtons />
+
+        <div className="text-center text-sm text-muted-foreground mt-8">
+          {t('Click and drag to rotate • Scroll to zoom', 'തിരിക്കാൻ ക്ലിക്കുചെയ്ത് വലിക്കുക • സൂം ചെയ്യാൻ സ്ക്രോൾ ചെയ്യുക')}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
